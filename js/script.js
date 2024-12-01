@@ -58,10 +58,8 @@ function addToCart(productName, price) {
 
     const existingItem = cart.find(item => item.name === productName);
     if (existingItem) {
-        // If the item exists, increase the quantity
         existingItem.quantity += 1;
     } else {
-        // Otherwise, add the item to the cart
         cart.push(item);
     }
 
@@ -80,7 +78,7 @@ function updateCart() {
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
         cartItem.innerHTML = `
-            <p>${item.name} - ${item.quantity} x $${item.price}</p>
+            <p>${item.name} - ${item.quantity} x Rp ${item.price}</p>
             <button onclick="removeFromCart('${item.name}')">Remove</button>
         `;
         cartContent.appendChild(cartItem);
