@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="papan_nama_krusty_krab-removebg-preview.png" type="image/x-icon">
+
+    <title>Krusty Krab Delivery</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="" id="menu" alt="">
+        <img src="img/papan_nama_krusty_krab-removebg-preview.png" class="logo" alt="" data-aos="fade-right" data-aos-delay="100">
+        <div class="nav">
+            <ul>
+                <li data-aos="fade-right" data-aos-delay="200"><a href="#home" class="ok">Home</a></li>
+                <li data-aos="fade-right" data-aos-delay="400"><a href="#Menu" class="yes">Menu</a></li>
+                <li data-aos="fade-right" data-aos-delay="600"><a href="#testimonials" class="tes">Testimonials</a></li>
+                <li data-aos="fade-right" data-aos-delay="800"><a href="#locations" class="no">locations</a></li>
+                <li data-aos="fade-right" data-aos-delay="1000"><a href="#contact" class="abou">Contact</a></li>
+            </ul>
+            <div class="order">
+                <a href="#Menu" data-aos="zoom-in-down" data-aos-delay="1500">Order Now</a>
+            </div>
+            <div class="icon-cart" data-aos="zoom-in-left" data-aos-delay="1000">
+                <a href="#" class="cart-link" onclick="toggleCart()"><i class='bx bxs-basket'></i></a>
+                <span class="cart-count">0</span> 
+            </div>
+
+<div class="cart-content" style="display: none;">
+    <div class="cart-popup">
+        <a href="#" class="close-btn" onclick="toggleCart()">X</a>
+        <h2>Your Cart</h2>
+        <div class="cart-items">
+        </div>
+        <p>Total: Rp<span id="total-price">0</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+</div>
+        </div>
+
+<div id="checkout-popup" class="popup">
+    <h2>Checkout</h2>
+    <p>Silakan pilih metode pembayaran:</p>
+    <select id="payment-method" onchange="togglePhoneInput()">
+        <option value="cod">COD (Cash Or Duel)</option>
+        <option value="dana">DANA</option>
+        <option value="ovo">OVO</option>
+        <option value="gopay">GoPay</option>
+    </select>
+
+    <div id="phone-input">
+        <input type="text" id="phone-number" placeholder="Masukkan nomor telepon">
+    </div>
+
+    <button onclick="processPayment()">Proses Pembayaran</button>
+   
+    <button onclick="closeCheckoutPopup()">Tutup</button>
+</div>
+
+<div id="thank-you-popup" class="popup" style="display: none;">
+    <div class="courier-anim">
+        <img src="kurir-removebg-preview.png" alt="Kurir" class="courier-img">
+        <p>Pesanan sedang diantar!</p>
+    </div>
+    <h2>Terimakasih banyak telah memesan!</h2>
+    <h2>Silahkan tunggu</h2>
+    <p>Pembayaran berhasil!</p>
+    <button onclick="closePopup()">Tutup</button>
+</div>
+    </div>
+
+
+    <div class="home" id="home">
+        <div class="container">
+            <div class="content">
+                <h1 data-aos="zoom-out-right" data-aos-delay="300">Krusty krab <br> krabby patty <br> & <br> gummy </h1>
+                <p data-aos="zoom-in-down" data-aos-delay="600">Juicy & Superbly tasty</p>
+                <a href="#Menu" data-aos="fade-down-right" data-aos-delay="800">ORDER NOW</a>
+            </div>
+            <div class="content" data-aos="zoom-in" data-aos-delay="2000">
+                <img src="img/spongebobb-removebg-preview.png" alt="">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="Menu" id="Menu">
+        <h1 class="title" data-aos="flip-down" data-aos-delay="300">Our Menu</h1>
+        <p class="subtitle" data-aos="flip-down" data-aos-delay="300">
+            <span class="first" id="fast-food-btn" onclick="showCategory('fast-food', this)">Fast Food</span> |
+            <span class="first" id="gummy-btn" onclick="showCategory('gummy', this)">Gummy</span> |
+            <span class="first" id="drink-btn" onclick="showCategory('drink', this)">Drink</span>
+        </p>
+        <div class="container">
+                <div class="menu-category fast-food">
+                    <div class="box">
+                        <a href="#" class="price">43.000</a>
+                        <img src="img/1.jpg" alt="Krabby Patty Original">
+                        <h3>Krabby Patty Original</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="p-1">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="p-1" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup-view" id="p1" >
+                        <div class="popup-card" >
+                            <a href="javascript:void(0);" class="close-btn"><i class="fas fa-times"></i></a>
+                            <div class="product-img">
+                                <img src="img/1.jpg" alt="Krabby Patty Original">
+                                <div class="info">
+                                    <h2>Krabby Patty <br><span>Original</span></h2>
+                                    <p>Daging, sayuran, tomat</p>
+                                    <span class="price-1">43.000</span>
+                                    <a href="#" class="add-cart-btn" onclick="addToCart('Krabby Patty Original', 43000)">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="#" class="price">54.000</a>
+                        <img src="img/2.webp" alt="">
+                        <h3>Krabby Patty Saos Biru</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="p-2">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="p-2" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+        
+                        <div class="popup-view" id="p-2">
+                            <div class="popup-card">
+                                <a href="#" class="close-btn"><i class="fas fa-times"></i></a>
+                                <div class="product-img">
+                                    <img src="img/2.webp" alt="">
+                                    <div class="info">
+                                        <h2>Krabby Patty<br><span>Saos Biru</span></h2>
+                                        <p>Daging, sayuran, tomat + saos biru</p>
+                                        <span class="price-1">54.000</span>
+                                        <a href="#" class="add-cart-btn" onclick="addToCart('Krabby Patty Saos', 54000)">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="#" class="price">72.000</a>
+                        <img src="img/patty double.webp" alt="">
+                        <h3>Krabby Patty Double</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="p-3">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="p-3" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popup-view" id="p-3">
+                        <div class="popup-card">
+                            <a href="#" class="close-btn"><i class="fas fa-times"></i>X</a>
+                            <div class="product-img">
+                                <img src="img/patty double.webp" alt="">
+                                <div class="info">
+                                    <h2>Krabby Patty<br><span>Double</span></h2>
+                                    <p>Daging yg tebal ditambah sayuran yg banyak + tomat</p>
+                                    <span class="price-1">72.000</span>
+                                    <a href="#" class="add-cart-btn" onclick="addToCart('Krabby Patty Double', 72000)">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="#" class="price">100.000</a>
+                        <img src="img/krabby patty.jpeg" alt="">
+                        <h3>Krabby Patty Special</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="p-4">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="p-4" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+        
+                        <div class="popup-view" id="p-4">
+                            <div class="popup-card">
+                                <a href="#" class="close-btn"><i class="fas fa-times"></i></a>
+                                <div class="product-img">
+                                    <img src="img/krabby patty.jpeg" alt="">
+                                    <div class="info">
+                                        <h2>Krabby Patty<br><span>Special</span></h2>
+                                        <p>Daging, keju yg banyak, sayuran, tomat + saos yg melimpah</p>
+                                        <span class="price-1">100.000</span>
+                                        <a href="#" class="add-cart-btn" onclick="addToCart('Krabby Patty Special', 100000)">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <a href="#" class="price">32.000</a>
+                        <img src="img/kentang gess.jpg" alt="">
+                        <h3>Krabby Kentang</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="p-5">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="p-5" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+        
+                        <div class="popup-view" id="p-5">
+                            <div class="popup-card">
+                                <a href="#" class="close-btn"><i class="fas fa-times"></i></a>
+                                <div class="product-img">
+                                    <img src="img/kentang gess.jpg" alt="">
+                                    <div class="info">
+                                        <h2>Krabby<br><span>kentang</span></h2>
+                                        <p>kentang yg ditaburi bumbu </p>
+                                        <span class="price-1">32.000</span>
+                                        <a href="#" class="add-cart-btn" onclick="addToCart('Krabby kentabg', 32000)">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+    
+                <div class="menu-category gummy">
+                    <div class="box">
+                        <a href="#" class="price">20.000</a>
+                        <img src="img/candy patty.jpg" alt="Gummy Bear">
+                        <h3>burger canddy</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="g-1">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="g-1" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popup-view" id="g-1">
+                        <div class="popup-card">
+                            <a href="javascript:void(0);" class="close-btn"><i class="fas fa-times"></i>X</a>
+                            <div class="product-img">
+                                <img src="img/candy patty.jpg" alt="Gummy Bear">
+                                <div class="info">
+                                    <h2>burger candy</h2>
+                                    <p>Permen manis berbentuk burger</p>
+                                    <span class="price-1">20.000</span>
+                                    <a href="#" class="add-cart-btn" onclick="addToCart('burger candy', 20000)">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <div class="menu-category drink">
+                    <div class="box">
+                        <a href="#" class="price">15.000</a>
+                        <img src="img/minuman.jpeg" alt="Soda">
+                        <h3>Kelp Shake</h3>
+                        <div class="star">
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                            <i class="bx bxs-star checked"></i>
+                        </div>
+                        <div class="product" data-name="d-1">
+                            <div class="btn">
+                                <a class="popup-btn" data-popup="d-1" href="javascript:void(0);">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="popup-view" id="d-1">
+                        <div class="popup-card">
+                            <a href="javascript:void(0);" class="close-btn"><i class="fas fa-times"></i>X</a>
+                            <div class="product-img">
+                                <img src="img/minuman.jpeg" alt="Soda">
+                                <div class="info">
+                                    <h2>kelp shake</h2>
+                                    <p>Minuman segar dari laut</p>
+                                    <span class="price-1">15.000</span>
+                                    <a href="#" class="add-cart-btn" onclick="addToCart('kelp shake', 15000)">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+    
+    <div class="tesimonials" id="testimonials">
+        <div class="container">
+            <div class="boxes">
+                <div class="box">
+                    <img src="img/useer-1.jpg" alt="">
+                    <div class="box-info">
+                        <h2>Alya</h2>
+                        <small>@alyasweets</small>
+                        <p>"Krabby Patty-nya luar biasa, benar-benar memuaskan! Dagingnya juicy, bumbunya pas. Ditambah dengan Gummy yang kenyal dan Kelp Shake yang segar, pengalaman makan yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/cr7.jpeg" alt="">
+                    <div class="box-info">
+                        <h2>Isabella Mia</h2>
+                        <small>@CristianoRonaldo</small>
+                        <p>"Krabby Patty yang satu ini juara! Rasanya gak ada tandingannya. Gummy-nya enak banget, manis dan kenyal. Kelp Shake-nya juga bikin segar, sangat cocok untuk melengkapi makan!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user-3.jpg" alt="">
+                    <div class="box-info">
+                        <h2>Oliver Elijah</h2>
+                        <small>@Oliverelijah</small>
+                        <p>"Krabby Patty ini benar-benar lezat! Rasanya enak dan segar. Setelah itu, Gummy-nya bikin ketagihan, kenyal dan manis. Kelp Shake-nya juga segar banget, pas banget untuk minuman penutup."</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user-4.png" alt="">
+                    <div class="box-info">
+                        <h2>Ava Sophia</h2>
+                        <small>@Avasophia</small>
+                        <p>"Makan Krabby Patty adalah pengalaman yang luar biasa! Gummy-nya juga sangat enak, kenyal dan manis. Ditambah Kelp Shake yang segar, benar-benar mengenyangkan!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user-5.jpg" alt="">
+                    <div class="box-info">
+                        <h2>Benjamin Lucas</h2>
+                        <small>@Benjaminlucas</small>
+                        <p>"Krabby Patty-nya lezat sekali, sangat penuh rasa! Gummy-nya juga kenyal, dan Kelp Shake-nya memberikan rasa yang segar dan unik. Kombinasi yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user9.jpg" alt="">
+                    <div class="box-info">
+                        <h2>Elijah James</h2>
+                        <small>@Elijahjames</small>
+                        <p>"Baru pertama kali coba Krabby Patty dan saya langsung jatuh cinta! Gummy-nya memberikan kejutan manis dan kenyal, sementara Kelp Shake-nya sangat menyegarkan. Pasti akan balik lagi!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user-7.webp" alt="">
+                    <div class="box-info">
+                        <h2>Emma Charlotte</h2>
+                        <small>@Emmacharlotte</small>
+                        <p>"Krabby Patty ini benar-benar memanjakan lidah! Gummy-nya sangat kenyal, enak banget. Kelp Shake-nya juga pas banget, segar dan menyegarkan. Paduan yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="img/user12.jpg" alt="">
+                    <div class="box-info">
+                        <h2>James William</h2>
+                        <small>@Jameswilliam</small>
+                        <p>"Saya sangat menikmati Krabby Patty, rasanya benar-benar sempurna. Gummy-nya kenyal dan manis, Kelp Shake-nya segar dan memberikan sensasi yang berbeda. Sungguh pengalaman makan yang menyenangkan!"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <h1>A Lot Of Testimonials</h1>
+                <div class="des">
+                    <img src="img/quote-left.png" class="quote-left" alt="">
+                    <p>"Pertama kali mencoba Krabby Patty, saya langsung terkesan dengan kelezatannya yang tak tertandingi! Roti yang empuk dengan daging patty yang juicy, dipadukan dengan sayuran segar dan saus rahasia yang menggugah selera—semuanya menciptakan kombinasi rasa yang sempurna. Setiap gigitan seolah membawa saya ke dunia penuh kenikmatan. Ditambah dengan Kelp Shake, minuman segar yang benar-benar menyegarkan! Rasanya seperti mendapatkan energi baru, dengan sensasi unik dari kelp yang membuat saya ketagihan. Kelp Shake ini benar-benar menjadi pasangan yang sempurna untuk Krabby Patty. Suatu pengalaman makan yang luar biasa!"</p>
+                    <img src="img/quote-right.png" class="quote-right" alt="">
+                </div>
+            </div>
+            <div class="users">
+                <div class="user user-1">
+                    <img src="img/useer-1.jpg" alt="">
+                    <div class="user-info">
+                        <h2>Alya</h2>
+                        <small>@alyasweets</small>
+                        <p>"Krabby Patty-nya luar biasa, benar-benar memuaskan! Dagingnya juicy, bumbunya pas. Ditambah dengan Gummy yang kenyal dan Kelp Shake yang segar, pengalaman makan yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="user user-2">
+                    <img src="img/cr7.jpeg" alt="">
+                    <div class="user-info">
+                        <h2>CristianoRonaldo</h2>
+                        <small>@CR7</small>
+                        <p>"Krabby Patty yang satu ini juara! Rasanya gak ada tandingannya. Gummy-nya enak banget, manis dan kenyal. Kelp Shake-nya juga bikin segar, sangat cocok untuk melengkapi makan!"</p>
+                    </div>
+                </div>
+                <div class="user user-3">
+                    <img src="img/jake.jpeg" alt="">
+                    <div class="user-info">
+                        <h2>Jake</h2>
+                        <small>@sipaling Jake</small>
+                        <p>"Krabby Patty ini benar-benar lezat! Rasanya enak dan segar. Setelah itu, Gummy-nya bikin ketagihan, kenyal dan manis. Kelp Shake-nya juga segar banget, pas banget untuk minuman penutup."</p>
+                    </div>
+                </div>
+                <div class="user user-4">
+                    <img src="img/pelangi.jpg" alt="">
+                    <div class="user-info">
+                        <h2>Pelangi</h2>
+                        <small>@Pelangi</small>
+                        <p>"Makan Krabby Patty adalah pengalaman yang luar biasa! Gummy-nya juga sangat enak, kenyal dan manis. Ditambah Kelp Shake yang segar, benar-benar mengenyangkan!"</p>
+                    </div>
+                </div>
+                <div class="user user-5">
+                    <img src="img/risma.jpg" alt="">
+                    <div class="user-info">
+                        <h2>Risma</h2>
+                        <small>@Risma</small>
+                        <p>"Krabby Patty-nya lezat sekali, sangat penuh rasa! Gummy-nya juga kenyal, dan Kelp Shake-nya memberikan rasa yang segar dan unik. Kombinasi yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="user user-6">
+                    <img src="img/user9.jpg" alt="">
+                    <div class="user-info">
+                        <h2>Elijah James</h2>
+                        <small>@Elijahjames</small>
+                        <p>"Baru pertama kali coba Krabby Patty dan saya langsung jatuh cinta! Gummy-nya memberikan kejutan manis dan kenyal, sementara Kelp Shake-nya sangat menyegarkan. Pasti akan balik lagi!"</p>
+                    </div>
+                </div>
+                <div class="user user-7">
+                    <img src="img/user-7.webp" alt="">
+                    <div class="user-info">
+                        <h2>Emma Charlotte</h2>
+                        <small>@Emmacharlotte</small>
+                        <p>"Krabby Patty ini benar-benar memanjakan lidah! Gummy-nya sangat kenyal, enak banget. Kelp Shake-nya juga pas banget, segar dan menyegarkan. Paduan yang sempurna!"</p>
+                    </div>
+                </div>
+                <div class="user user-8">
+                    <img src="img/user12.jpg" alt="">
+                    <div class="user-info">
+                        <h2>James William</h2>
+                        <small>@Jameswilliam</small>
+                            <p>"Saya sangat menikmati Krabby Patty, rasanya benar-benar sempurna. Gummy-nya kenyal dan manis, Kelp Shake-nya segar dan memberikan sensasi yang berbeda. Sungguh pengalaman makan yang menyenangkan!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+    <div class="locations" id="locations"> 
+        <h1 class="title">Locations</h1>
+        <p>
+            <a href="#">Bikini bottom</a>
+            <a href="#">Bandung</a>
+            <a href="#">Garut</a>
+            <a href="#">India</a>
+        </p>
+        <div class="container">
+            <div class="text">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2030276.560288844!2d104.67773437500003!3d-6.344303068557421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6993cca9aad709%3A0xadc17a242ad0b845!2sBikini%20bottom%20resto%2087!5e0!3m2!1sid!2sid!4v1732484302382!5m2!1sid!2sid" width="350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="text">
+                <h2>Krusty Krab Jalan Kelp Forest No. 1
+                    Bikini Bottom, Laut Atlantik
+                    Planet Bumi</h2>
+                <p>(213) 625-0292 <br> Mon-Sun 8am - 4pm</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact">
+        <div class="container">
+            <div class="content">
+                <h1>Contact Us</h1>
+                <div class="form">
+                    <input type="text" placeholder="Nama" id="sendername"><br>
+                    <input type="text" placeholder="To" id="to"><br>
+                    <input type="text" placeholder="Subject" id="subject"><br>
+                    <textarea id="message" cols="30" rows="5" placeholder="Message" required></textarea><br>
+                    <button onclick="sendMail();">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("yzlqS-n3mmRnDVIPU");
+    
+        function sendMail() {
+            var params = {
+                sendername: document.querySelector("#sendername").value,
+                to: document.querySelector("#to").value,
+                subject: document.querySelector("#subject").value,
+                message: document.querySelector("#message").value,
+            };
+    
+            var serviceID = "service_f96kkmn";
+            var templateID = "template_3xsxwyr";
+    
+            emailjs.send(serviceID, templateID, params)
+                .then((res) => {
+                    alert("Email sent successfully!");
+                })
+                .catch((error) => {
+               
+                });
+        }
+    </script>
+    
+
+
+    <div class="coming-soon-container">
+        <h2>Produk Baru! <span>Coming Soon!</span></h2>
+        <p>Jangan lewatkan! Produk terbaru kami akan segera hadir. Stay tuned!</p>
+    
+        <div class="coming-soon-images">
+            <div class="coming-soon-item">
+                <img src="paket 1.webp" alt="Coming Soon Product 1">
+                <p>paket krabby patty 1</p>
+            </div>
+            <div class="coming-soon-item">
+                <img src="paket 2.webp" alt="Coming Soon Product 2">
+                <p>paket krabby patty 2</p>
+            </div>
+            <div class="coming-soon-item">
+                <img src="paket 3.jpg" alt="Coming Soon Product 3">
+                <p>paket krabby patty 3</p>
+            </div>
+            <div class="coming-soon-item">
+                <img src="canddy patty 3.jpeg" alt="Coming Soon Product 4">
+                <p>candy patty box </p>
+            </div>
+        </div>
+    
+        <a href="#" class="coming-soon-btn">Dapatkan Info Lebih Lanjut</a>
+    </div>
+    
+
+    
+    <div class="footer">
+        <div class="content">
+            <div class="boxes">
+                <img src="papan_nama_krusty_krab-removebg-preview.png" class="img" alt="">
+                <p>Copy right &copy; bikini bottom All Rights Reserved</p>
+            </div>
+            <div class="boxes">
+                <h3>Follow On Social</h3>
+                <i class="fab fa-facebook-square icons"></i>
+                <i class="fab fa-twitter-square icons"></i>
+                <i class="fab fa-instagram-square icons"></i>
+                <i class="fab fa-tiktok icons"></i>
+                <p>azfdfkhz@gmail.com</p>
+            </div>
+
+ 
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200, 
+            delay: 100,     
+            once: false,     
+          });
+    </script>    
+</body>
+</html>
