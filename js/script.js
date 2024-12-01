@@ -73,12 +73,10 @@ function updateCart() {
     const cartCount = document.querySelector('.cart-count');
     const totalPriceElem = document.getElementById('total-price');
 
-    // Clear the current cart display
     cartContent.innerHTML = '';
 
     let totalPrice = 0;
     cart.forEach(item => {
-        // Add item to the cart list
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
         cartItem.innerHTML = `
